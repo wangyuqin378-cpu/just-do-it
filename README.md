@@ -2,31 +2,38 @@
 
 [简体中文](README.zh-CN.md) · [Workflow examples](EXAMPLES.md)
 
-**An experiment in turning a request into a tracked, executable work plan.**
+## What it is
 
-For exploring how an agent can capture a task, route it to the right workflow and keep a clear record of what happened. The repository contains skill instructions and document templates, not a standalone application.
+An Agent Skill experiment that turns requests or meeting notes into a tracked work plan: identify what belongs to you, route each action, and keep a record of the outcome.
 
-**Stage:** workflow experiment with dependencies on internal workplace services and identity configuration. It is not a general-purpose, ready-to-install public tool. Reading the examples requires no service access; running the original workflow does.
+It contains workflow instructions and document templates, not a standalone app. **The original workflow relies on internal workplace services and identity configuration**, so this public repository cannot run it on its own.
 
-## Start with the workflow
+## How to use it
 
-1. Read [EXAMPLES.md](EXAMPLES.md) for sample requests and the expected flow.
-2. Read [SKILL.md](SKILL.md) for routing, prerequisites and execution behavior.
-3. Use [TODO_LIST_FORMAT.md](TODO_LIST_FORMAT.md) and [DOC_TEMPLATES.md](DOC_TEMPLATES.md) to understand the resulting task records.
-4. Review [FALLBACKS.md](FALLBACKS.md) before adapting unavailable integrations.
+Start by reading the workflow; no service access is needed for that:
 
-A typical flow is: **request → task record → confirmation where required → execution → result or follow-up**. It can depend on internal workspace CLIs, user identity variables and organization-specific services. This repository does not provide those services or credentials, so there is no generic installation command that completes the workflow.
+1. Open [EXAMPLES.md](EXAMPLES.md) to see a request, its classification and the expected output.
+2. Read [SKILL.md](SKILL.md) to check the required services, identity variables and routing rules.
+3. Inspect the [task format](TODO_LIST_FORMAT.md) and [document templates](DOC_TEMPLATES.md) to understand the records it produces.
+4. Before adapting it to another environment, review [fallback behavior](FALLBACKS.md) and supply equivalents for the unavailable integrations.
 
-## Contents
+A simplified illustrative request:
 
-- [SKILL.md](SKILL.md): workflow entry point.
-- [EXAMPLES.md](EXAMPLES.md): scenarios and examples.
-- [ROUTE_EXTENSIONS.md](ROUTE_EXTENSIONS.md): additional routing rules.
-- [SHARE_LIST_FORMAT.md](SHARE_LIST_FORMAT.md): shared task format.
-- [TODO_LIST_FORMAT.md](TODO_LIST_FORMAT.md): personal task format.
-- [DOC_TEMPLATES.md](DOC_TEMPLATES.md): output templates.
-- [FALLBACKS.md](FALLBACKS.md): fallback behavior.
+```text
+I need to finish the review document, arrange a follow-up meeting,
+and ask a teammate for last week's data.
+```
 
-## License
+The workflow separates that into a document task, candidate meeting times and a message draft. Actions that need confirmation wait for it; each result or unresolved step goes back into the task record. This example describes the intended flow, not a completed external action.
 
-The source is publicly visible. No open-source license has been granted in this repository.
+There is no universal installation command: the repository does not provide the internal services or credentials. Use the examples as a workflow reference unless you have a compatible environment.
+
+## Why this project exists
+
+Meeting notes and scattered requests often mix personal actions, work owned by someone else and decisions that still need confirmation. A plain list can lose those distinctions.
+
+This experiment explores how an agent can turn that input into follow-through: decide who owns an action, choose a suitable tool, and retain enough evidence to tell what actually happened.
+
+[Routing extensions](ROUTE_EXTENSIONS.md) · [Shared task format](SHARE_LIST_FORMAT.md)
+
+**License:** source is public; no open-source license has been granted.
